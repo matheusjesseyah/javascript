@@ -14,5 +14,5 @@ let altura = 160
 
 console.log(`Nome: ${nome}`)
 console.log(`Idade: ${idade}`)
-console.log(`Idade: ${peso}`)
-console.log(`Idade: ${altura}`)
+console.log(`Peso: ${peso}`)
+console.log(`Altura: ${altura}`)
