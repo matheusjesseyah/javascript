@@ -11,5 +11,5 @@ porcentagem = 10;
 
 total = (valor * porcentagem)/100;
 
-console.log(`${porcentagem}% do valor ${valor} = ${total}`)
+console.log(`${porcentagem}% de ${valor} = ${total}`)
 
