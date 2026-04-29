@@ -5,6 +5,7 @@
  */
 
 const { random } = require('colors');
+const color = require('colors');
 
 const prompt = require('prompt-sync')();
 
@@ -26,7 +27,12 @@ do {
     let nipe = nipes[Math.floor(Math.random()*4)];
     let face =  faces[Math.floor(Math.random()*13)]
 
-    console.log(`|${face}${nipe}|`);
+    if (nipe === "♥" || nipe === "♦") {
+        console.log(`|${face.red}${nipe.red}|`);
+    } else  {
+        console.log(`|${face}${nipe}|`);
+    }
+    
 
     console.log("__________________________")
 
