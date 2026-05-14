@@ -277,13 +277,11 @@ function editarAluno() {
         alunos[indice][3] = novoPeso
         alunos[indice][4] = novaAltura
         alunos[indice][5] = novoVip
-
-        console.log("")
-        prompt("ENTER...")
     }
+    console.log("")
+    prompt("ENTER...")
 }
 //CRUD - Update (fim) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 
 //CRUD - Delete >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function excluirAluno() {
@@ -291,6 +289,44 @@ function excluirAluno() {
     console.log("=== EXCLUIR ALUNO ===")
     console.log("")
 
+    let buscaMatricula = Number(prompt("Digite a matrícula do aluno: "))
+
+    //buscar índice do aluno
+    let indice = alunos.findIndex((a) => {
+        return a[0] === buscaMatricula
+    })
+
+    console.log("")
+
+    //validar busca
+    if (indice === -1) {
+        console.log("Aluno não encontrado")
+    } else {
+        //dados do aluno
+        console.log("Aluno encontrado:")
+        console.log("")
+        console.log(`Matrícula: ${alunos[indice][0]}`)
+        console.log(`Nome: ${alunos[indice][1]}`)
+        console.log(`Idade: ${alunos[indice][2]}`)
+        console.log(`Peso: ${alunos[indice][3]}`)
+        console.log(`Altura: ${alunos[indice][4]}`)
+        console.log(`VIP: ${alunos[indice][5]}`)
+        console.log("")
+
+        //confirmação
+        let confirmar = prompt("Confirmar exclusão? (s/n): ").toLowerCase()
+        if (confirmar === "s") {
+            //excluir aluno
+            delete alunos[indice]
+            console.log("")
+            console.log("Aluno excluído com sucesso!")
+        } else {
+            console.log("")
+            console.log("Exclusão cancelada")
+        }
+    }
+
+    console.log("")
     prompt("ENTER...")
 }
 //CRUD - Delete (fim) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
