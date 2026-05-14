@@ -362,6 +362,27 @@ function gerarRelatorios() {
         console.log("=== ALUNOS VIP ===")
         console.log("")
 
+        //logica principal
+        //filtrar todos os alunos VIP
+        let alunosVip = alunos.filter((a) => {
+            return a[5] === true
+        })
+
+        //validação
+        if (alunosVip.length === 0) {
+            console.log("Nenhum aluno VIP cadastrado")
+        } else {
+            //map "cabeçalho da tabela de alunos VIP"
+            let listaVip = alunosVip.map((a) => {
+                return {
+                    Matrícula: a[0],
+                    Nome: a[1]
+                }
+            })
+            console.table(listaVip)
+        }
+
+        console.log("")
         prompt("ENTER...")
     }
 
@@ -371,6 +392,20 @@ function gerarRelatorios() {
         console.log("=== MÉDIA DE IDADES ===")
         console.log("")
 
+        //logica principal
+        if (alunos.length === 0){
+            console.log("Nenhum aluno cadastrado")
+        } else {
+            let somaIdades = 0
+            //laço de repetição
+            alunos.forEach((a) => {
+                somaIdades += a[2]
+            })
+            let media = somaIdades / alunos.length
+            console.log (`Média de idade: ${media.toFixed(0)} anos`)
+        }
+
+        console.log("")
         prompt("ENTER...")
     }
 
