@@ -229,8 +229,58 @@ function editarAluno() {
     console.clear()
     console.log("=== ALTERAR ALUNO ===")
     console.log("")
+    console.clear()
+    console.log("=== ALTERAR ALUNO ===")
+    console.log("")
 
-    prompt("ENTER...")
+    let buscaMatricula = Number(prompt("Digite a matrícula do aluno: "))
+
+    //buscar índice do aluno
+    let indice = alunos.findIndex((a) => {
+        return a[0] === buscaMatricula
+    })
+
+    console.log("")
+
+    //validar busca
+    if (indice === -1) {
+        console.log("Aluno não encontrado")
+    } else {
+        //dados atuais
+        console.log("Dados atuais:")
+        console.log("")
+
+        console.log(`Nome: ${alunos[indice][1]}`)
+        console.log(`Idade: ${alunos[indice][2]}`)
+        console.log(`Peso: ${alunos[indice][3]}`)
+        console.log(`Altura: ${alunos[indice][4]}`)
+        console.log(`VIP: ${alunos[indice][5]}`)
+        console.log("")
+
+        //novos dados
+        let novoNome = prompt("Novo nome: ")
+        let novaIdade = Number(prompt("Nova idade: "))
+        let novoPeso = Number(prompt("Novo peso: "))
+        let novaAltura = Number(prompt("Nova altura: "))
+
+        let novoVip = prompt("Aluno VIP? (s/n): ")
+
+        if (novoVip === "s") {
+            novoVip = true
+        } else {
+            novoVip = false
+        }
+
+        //alteração
+        alunos[indice][1] = novoNome
+        alunos[indice][2] = novaIdade
+        alunos[indice][3] = novoPeso
+        alunos[indice][4] = novaAltura
+        alunos[indice][5] = novoVip
+
+        console.log("")
+        prompt("ENTER...")
+    }
 }
 //CRUD - Update (fim) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -362,7 +412,7 @@ function gerarRelatorios() {
         console.log("=== ALUNOS VIP ===")
         console.log("")
 
-        //logica principal
+        //lógica principal
         //filtrar todos os alunos VIP
         let alunosVip = alunos.filter((a) => {
             return a[5] === true
@@ -372,7 +422,7 @@ function gerarRelatorios() {
         if (alunosVip.length === 0) {
             console.log("Nenhum aluno VIP cadastrado")
         } else {
-            //map "cabeçalho da tabela de alunos VIP"
+            //map "cabeçalho da tabela de alunos vip"
             let listaVip = alunosVip.map((a) => {
                 return {
                     Matrícula: a[0],
@@ -392,8 +442,8 @@ function gerarRelatorios() {
         console.log("=== MÉDIA DE IDADES ===")
         console.log("")
 
-        //logica principal
-        if (alunos.length === 0){
+        //lógica principal
+        if (alunos.length === 0) {
             console.log("Nenhum aluno cadastrado")
         } else {
             let somaIdades = 0
@@ -402,7 +452,7 @@ function gerarRelatorios() {
                 somaIdades += a[2]
             })
             let media = somaIdades / alunos.length
-            console.log (`Média de idade: ${media.toFixed(0)} anos`)
+            console.log(`Média de idade: ${media.toFixed(0)} anos`)
         }
 
         console.log("")
@@ -445,20 +495,21 @@ function gerarRelatorios() {
             let percNormal = ((pesoNormal / total) * 100)
             let percAcima = ((acimaPeso / total) * 100)
             //mini gráfico
-            let graficoAbaixo = ("■").repeat(Math.round(percAbaixo /2))
-            let graficoNormal = ("■").repeat(Math.round(percNormal /2))
-            let graficoAcima = ("■").repeat(Math.round(percAcima /2))
+            let graficoAbaixo = "■".repeat(Math.round(percAbaixo / 2))
+            let graficoNormal = "■".repeat(Math.round(percNormal / 2))
+            let graficoAcima = "■".repeat(Math.round(percAcima / 2))
 
-            console.log(`Abaixo de peso: ${percAbaixo.toFixed(1)}%`)
+            console.log(`Abaixo do peso: ${percAbaixo.toFixed(1)}%`)
             console.log(graficoAbaixo)
             console.log("")
 
-            console.log(`Peso Normal: ${percNormal.toFixed(1)}%`)
+            console.log(`Peso normal: ${percNormal.toFixed(1)}%`)
             console.log(graficoNormal)
             console.log("")
 
-            console.log(`Acima de peso: ${percAcima.toFixed(1)}%`)
+            console.log(`Acima do peso: ${percAcima.toFixed(1)}%`)
             console.log(graficoAcima)
+            console.log("")
         }
 
         console.log("")
