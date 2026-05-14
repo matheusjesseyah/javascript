@@ -1,7 +1,7 @@
 /**
  * Sistema para gestão de academia
  * Estudo de array como estrutura de dados
- * @author Professor José de Assis
+ * @author Matheus Jade Esseyah
  */
 
 //Importação de pacotes(
